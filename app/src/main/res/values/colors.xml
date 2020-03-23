@@ -6,6 +6,8 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#393535</color>
     <color name="ash">#93969b</color>
-    <color name="yellow">#e6f924</color>
+    <color name="yellow">#F2FF00</color>
+    <color name="orange">#FFC107</color>
     <color name="sky_blue">#2fb7d3</color>
+    <color name="dark_sky_blue">#2F53D3</color>
 </resources>

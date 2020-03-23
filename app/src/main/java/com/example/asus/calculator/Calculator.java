@@ -14,10 +14,10 @@ import com.example.asus.calculator.R;
 public class Calculator extends AppCompatActivity implements View.OnClickListener {
 
     TextView equ, res;
-    ImageButton plus, minus, dev, mul, equal, delete;
+    Button plus, minus, dev, mul, delete, equal;
     Button num0, num1, num2, num3, num4, num5, num6, num7, num8, num9, dot, clear;
     HorizontalScrollView hsv;
-    String Eqn="", Result;
+    String Eqn = "", Result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
         equ = findViewById(R.id.equationId);
         res = findViewById(R.id.resultId);
+
         plus = findViewById(R.id.plusId);
         minus = findViewById(R.id.minusId);
         mul = findViewById(R.id.mulId);
@@ -67,7 +68,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         num9.setOnClickListener(this);
     }
 
-    boolean f=true, ff=true;
+    boolean f = true, ff = true;
 
     @Override
     public void onClick(View view) {
@@ -80,177 +81,228 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
         switch (view.getId()) {
             case R.id.Id0:
-                if (f==false){
-                    f=true;
-                    ff=true;
-                    Eqn="";
-                    res.setText("0");
+                if (f == false) {
+                    f = true;
+                    ff = true;
+                    Eqn = "";
                 }
                 Eqn = Eqn + '0';
                 equ.setText(Eqn);
+
+                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                else {
+                    ff = false;
+                    Result = "0";
+                }
+                res.setText(Result);
                 break;
             case R.id.Id1:
-                if (f==false){
-                    f=true;
-                    ff=true;
-                    Eqn="";
-                    res.setText("0");
+                if (f == false) {
+                    f = true;
+                    ff = true;
+                    Eqn = "";
                 }
                 Eqn = Eqn + '1';
                 equ.setText(Eqn);
+
+                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                else {
+                    ff = false;
+                    Result = "0";
+                }
+                res.setText(Result);
                 break;
             case R.id.Id2:
-                if (f==false){
-                    f=true;
-                    ff=true;
-                    Eqn="";
-                    res.setText("0");
+                if (f == false) {
+                    f = true;
+                    ff = true;
+                    Eqn = "";
                 }
                 Eqn = Eqn + '2';
                 equ.setText(Eqn);
+
+                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                else {
+                    ff = false;
+                    Result = "0";
+                }
+                res.setText(Result);
                 break;
             case R.id.Id3:
-                if (f==false){
-                    f=true;
-                    ff=true;
-                    Eqn="";
-                    res.setText("0");
+                if (f == false) {
+                    f = true;
+                    ff = true;
+                    Eqn = "";
                 }
                 Eqn = Eqn + '3';
                 equ.setText(Eqn);
+
+                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                else {
+                    ff = false;
+                    Result = "0";
+                }
+                res.setText(Result);
                 break;
             case R.id.Id4:
-                if (f==false){
-                    f=true;
-                    ff=true;
-                    Eqn="";
-                    res.setText("0");
+                if (f == false) {
+                    f = true;
+                    ff = true;
+                    Eqn = "";
                 }
                 Eqn = Eqn + '4';
                 equ.setText(Eqn);
+
+                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                else {
+                    ff = false;
+                    Result = "0";
+                }
+                res.setText(Result);
                 break;
             case R.id.Id5:
-                if (f==false){
-                    f=true;
-                    ff=true;
-                    Eqn="";
-                    res.setText("0");
+                if (f == false) {
+                    f = true;
+                    ff = true;
+                    Eqn = "";
                 }
                 Eqn = Eqn + '5';
                 equ.setText(Eqn);
+
+                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                else {
+                    ff = false;
+                    Result = "0";
+                }
+                res.setText(Result);
                 break;
             case R.id.Id6:
-                if (f==false){
-                    f=true;
-                    ff=true;
-                    Eqn="";
-                    res.setText("0");
+                if (f == false) {
+                    f = true;
+                    ff = true;
+                    Eqn = "";
                 }
                 Eqn = Eqn + '6';
                 equ.setText(Eqn);
+
+                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                else {
+                    ff = false;
+                    Result = "0";
+                }
+                res.setText(Result);
                 break;
             case R.id.Id7:
-                if (f==false){
-                    f=true;
-                    ff=true;
-                    Eqn="";
-                    res.setText("0");
+                if (f == false) {
+                    f = true;
+                    ff = true;
+                    Eqn = "";
                 }
                 Eqn = Eqn + '7';
                 equ.setText(Eqn);
+
+                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                else {
+                    ff = false;
+                    Result = "0";
+                }
+                res.setText(Result);
                 break;
             case R.id.Id8:
-                if (f==false){
-                    f=true;
-                    ff=true;
-                    Eqn="";
-                    res.setText("0");
+                if (f == false) {
+                    f = true;
+                    ff = true;
+                    Eqn = "";
                 }
                 Eqn = Eqn + '8';
                 equ.setText(Eqn);
+
+                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                else {
+                    ff = false;
+                    Result = "0";
+                }
+                res.setText(Result);
                 break;
             case R.id.Id9:
-                if (f==false){
-                    f=true;
-                    ff=true;
-                    Eqn="";
-                    res.setText("0");
+                if (f == false) {
+                    f = true;
+                    ff = true;
+                    Eqn = "";
                 }
                 Eqn = Eqn + '9';
                 equ.setText(Eqn);
+
+                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                else {
+                    ff = false;
+                    Result = "0";
+                }
+                res.setText(Result);
                 break;
             case R.id.dotId:
-                if (f==false){
-                    f=true;
-                    ff=true;
-                    Eqn="";
-                    res.setText("0");
+                if (f == false) {
+                    f = true;
+                    ff = true;
+                    Eqn = "";
                 }
                 Eqn = Eqn + '.';
                 equ.setText(Eqn);
                 break;
             case R.id.plusId:
-                if (ff==false){
-                    ff=true;
-                    f=true;
-                    Eqn="";
-                    Result="";
+                if (ff == false) {
+                    ff = true;
+                    f = true;
+                    Eqn = "";
+                    Result = "";
                     res.setText("0");
-                }
-                else if (f==false){
-                    f=true;
-                    Eqn=Result;
-                    res.setText("0");
+                } else if (f == false) {
+                    f = true;
+                    Eqn = Result;
                 }
                 Eqn = Eqn + '+';
                 equ.setText(Eqn);
                 break;
             case R.id.minusId:
-                if (ff==false){
-                    ff=true;
-                    f=true;
-                    Eqn="";
-                    Result="";
+                if (ff == false) {
+                    ff = true;
+                    f = true;
+                    Eqn = "";
+                    Result = "";
                     res.setText("0");
-                }
-                else if (f==false){
-                    f=true;
-                    Eqn=Result;
-                    res.setText("0");
+                } else if (f == false) {
+                    f = true;
+                    Eqn = Result;
                 }
                 Eqn = Eqn + '-';
                 equ.setText(Eqn);
                 break;
             case R.id.mulId:
-                if (ff==false){
-                    ff=true;
-                    f=true;
-                    Eqn="";
-                    Result="";
+                if (ff == false) {
+                    ff = true;
+                    f = true;
+                    Eqn = "";
+                    Result = "";
                     res.setText("0");
+                } else if (f == false) {
+                    f = true;
+                    Eqn = Result;
                 }
-                else if (f==false){
-                    f=true;
-                    Eqn=Result;
-                    res.setText("0");
-                }
-                Eqn = Eqn + '*';
+                if(Eqn.length()!=0 && Eqn.charAt(Eqn.length()-1) != '\u00D7' && Eqn.charAt(Eqn.length()-1) != '\u00F7') Eqn = Eqn + '\u00D7';
                 equ.setText(Eqn);
                 break;
             case R.id.devId:
-                if (ff==false){
-                    ff=true;
-                    f=true;
-                    Eqn="";
-                    Result="";
+                if (ff == false) {
+                    ff = true;
+                    f = true;
+                    Eqn = "";
+                    Result = "";
                     res.setText("0");
+                } else if (f == false) {
+                    f = true;
+                    Eqn = Result;
                 }
-                else if (f==false){
-                    f=true;
-                    Eqn=Result;
-                    res.setText("0");
-                }
-                Eqn = Eqn + '/';
+                if(Eqn.length()!=0 && Eqn.charAt(Eqn.length()-1) != '\u00D7' && Eqn.charAt(Eqn.length()-1) != '\u00F7') Eqn = Eqn + '\u00F7';
                 equ.setText(Eqn);
                 break;
             case R.id.clearId:
@@ -260,158 +312,178 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 res.setText("0");
                 break;
             case R.id.deleteId:
-                if (f==false){
-                    f=true;
+                if (f == false) {
+                    f = true;
                     res.setText("0");
                 }
-                if(Eqn != "") Eqn = removeChar(Eqn,Eqn.length()-1);
+                if (Eqn != "") Eqn = removeChar(Eqn, Eqn.length() - 1);
                 equ.setText(Eqn);
+
+                if(!Eqn.isEmpty() && Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') {
+                    Result = solution(Eqn);
+                    res.setText(Result);
+                }
+                else if(Eqn.isEmpty()){
+                    Eqn = "";
+                    Result = "";
+                    equ.setText(Eqn);
+                    res.setText("0");
+                }
+
                 break;
             case R.id.equalId:
-                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                if (!Eqn.isEmpty()) Eqn = Result;
                 else {
                     ff = false;
-                    Result="0";
+                    Result = "0";
                 }
                 res.setText(Result);
-                f=false;
-                hsv.postDelayed(new Runnable() {
-                    public void run() {
-                        hsv.fullScroll(HorizontalScrollView.FOCUS_LEFT);
-                    }
-                }, 40L);
+                equ.setText(Eqn);
+                f = false;
                 break;
         }
     }
+
     public String removeChar(String str, Integer n) {
         String front = str.substring(0, n);
-        String back = str.substring(n+1, str.length());
+        String back = str.substring(n + 1, str.length());
         return front + back;
     }
+
     public String addSollution(String str, String r, Integer n, Integer m) {
         String front = str.substring(0, n);
-        String back = str.substring(m+1, str.length());
+        String back = str.substring(m + 1, str.length());
         return front + r + back;
     }
-    private String findLeftNum(String str, Integer n){
+
+    private String findLeftNum(String str, Integer n) {
         Integer i;
-        for (i=n-1;str.charAt(i)!='+'&&str.charAt(i)!='-'&&str.charAt(i)!='*'&&str.charAt(i)!='/'&&i>0;i--);
-        if (i==0||str.charAt(i)=='+'||str.charAt(i)=='-') i--;
-        return str.substring(i+1, n);
+        for (i = n - 1; str.charAt(i) != '+' && str.charAt(i) != '-' && str.charAt(i) != '\u00D7' && str.charAt(i) != '\u00F7' && i > 0; i--)
+            ;
+        if (i == 0 || str.charAt(i) == '+' || str.charAt(i) == '-') i--;
+        return str.substring(i + 1, n);
     }
-    private String findRightNum(String str, Integer n){
+
+    private String findRightNum(String str, Integer n) {
         Integer i;
-        for (i=n+1;str.charAt(i)!='+'&&str.charAt(i)!='-'&&str.charAt(i)!='*'&&str.charAt(i)!='/'&&i<str.length()-1;i++);
-        if (i==str.length()-1) i++;
-        return str.substring(n+1, i);
+        for (i = n + 1; str.charAt(i) != '+' && str.charAt(i) != '-' && str.charAt(i) != '\u00D7' && str.charAt(i) != '\u00F7' && i < str.length() - 1; i++)
+            ;
+        if (i == str.length() - 1) i++;
+        return str.substring(n + 1, i);
     }
-    private String morePlusMinus(String str){
-        for (Integer i=0;i<str.length();i++){
-            if (str.charAt(i)=='+'&&i!=str.length()-1){
-                if (str.charAt(i+1)=='+'||str.charAt(i+1)=='-'){
-                    str = removeChar(str,i);
+
+    private String morePlusMinus(String str) {
+        for (Integer i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '+' && i != str.length() - 1) {
+                if (str.charAt(i + 1) == '+' || str.charAt(i + 1) == '-') {
+                    str = removeChar(str, i);
                     i--;
                 }
-            }
-            else if (str.charAt(i)=='-'&&i!=str.length()-1){
-                if (str.charAt(i+1)=='+'||str.charAt(i+1)=='-'){
-                    if (str.charAt(i+1)=='+') str = addSollution(str,"-",i,i+1);
-                    else str = addSollution(str,"+",i,i+1);
+            } else if (str.charAt(i) == '-' && i != str.length() - 1) {
+                if (str.charAt(i + 1) == '+' || str.charAt(i + 1) == '-') {
+                    if (str.charAt(i + 1) == '+') str = addSollution(str, "-", i, i + 1);
+                    else str = addSollution(str, "+", i, i + 1);
                     i--;
                 }
             }
         }
         return str;
     }
-    private boolean dotCheaking(String str){
-        boolean flag=false;
-        for (Integer i=0;i<str.length();i++){
-            if (str.charAt(i)=='.'){
-                if (!flag) flag=true;
+
+    private boolean dotCheaking(String str) {
+        boolean flag = false;
+        for (Integer i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '.') {
+                if (!flag) flag = true;
                 else return true;
             }
         }
         return false;
     }
-    private boolean singleDotCheaking(String str){
-        for (Integer i=0;i<str.length();i++){
-            if (str.charAt(i)=='.'){
+
+    private boolean singleDotCheaking(String str) {
+        for (Integer i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '.') {
                 return true;
             }
         }
         return false;
     }
-    private boolean eCheaking(String str){
-        for (Integer i=0;i<str.length();i++){
-            if (str.charAt(i)=='E'){
+
+    private boolean eCheaking(String str) {
+        for (Integer i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == 'E') {
                 return true;
             }
         }
         return false;
     }
-    private  Integer ePosition(String str){
-        for (Integer i=0;i<str.length();i++){
-            if (str.charAt(i)=='E'){
+
+    private Integer ePosition(String str) {
+        for (Integer i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == 'E') {
                 return i;
             }
         }
         return 0;
     }
-    private String solution(String str){
-        String leftNum="", rightNum="", r="";
-        for (Integer i=0;i<str.length();i++){
-            if ((str.charAt(i) == '*') || (str.charAt(i) == '/')){
+
+    private String multiAndDiv(String str) {
+        String leftNum = "", rightNum = "", r = "";
+        for (Integer i = 0; i < str.length(); i++) {
+            if ((str.charAt(i) == '\u00D7') || (str.charAt(i) == '\u00F7')) {
                 str = morePlusMinus(str);
-                if(i!=0&&i!=str.length()-1){
-                    if ((i!=str.length()-1)&&((str.charAt(i+1) == '*') || (str.charAt(i+1) == '/'))){
-                        ff=false;
+                if (i != 0 && i != str.length() - 1) {
+                    if ((i != str.length() - 1) && ((str.charAt(i + 1) == '\u00D7') || (str.charAt(i + 1) == '\u00F7'))) {
+                        ff = false;
                         return "Input Error";
-                    }
-                    else if (str.charAt(i - 1) == '+' || str.charAt(i - 1) == '-'){
-                        ff=false;
+                    } else if (str.charAt(i - 1) == '+' || str.charAt(i - 1) == '-') {
+                        ff = false;
                         return "Input Error";
-                    }
-                    else if ((str.charAt(i+1) == '+') || (str.charAt(i+1) == '-')){
-                        if (i==str.length()-2||((str.charAt(i+2) == '*') || (str.charAt(i+2) == '/'))){
-                            ff=false;
+                    } else if ((str.charAt(i + 1) == '+') || (str.charAt(i + 1) == '-')) {
+                        if (i == str.length() - 2 || ((str.charAt(i + 2) == '\u00D7') || (str.charAt(i + 2) == '\u00F7'))) {
+                            ff = false;
                             return "Input Error";
                         }
                         leftNum = findLeftNum(str, i);
-                        if (str.charAt(i+1) == '+') rightNum = "+" + findRightNum(str, i+1);
-                        else rightNum = "-" + findRightNum(str, i+1);
-                    }
-                    else{
+                        if (str.charAt(i + 1) == '+') rightNum = "+" + findRightNum(str, i + 1);
+                        else rightNum = "-" + findRightNum(str, i + 1);
+                    } else {
                         leftNum = findLeftNum(str, i);
                         rightNum = findRightNum(str, i);
                     }
 
-                    if (dotCheaking(leftNum) || dotCheaking(rightNum)){
-                        ff=false;
+                    if (dotCheaking(leftNum) || dotCheaking(rightNum)) {
+                        ff = false;
                         return "Input Error";
                     }
 
                     double x = Double.parseDouble(leftNum);
                     double y = Double.parseDouble(rightNum);
-                    if (str.charAt(i) == '*') r = Double.toString(x*y);
+                    if (str.charAt(i) == '\u00D7') r = Double.toString(x * y);
                     else {
-                        if (y==0)
-                        {
-                            ff=false;
+                        if (y == 0) {
+                            ff = false;
                             return "Indefinite";
-                        }
-                        else r = Double.toString(x/y);
+                        } else r = Double.toString(x / y);
                     }
 
-                    if (r.charAt(0)!='-') str = addSollution(str,"+"+r,i-leftNum.length(),i+rightNum.length());
-                    else str = addSollution(str,r,i-leftNum.length(),i+rightNum.length());
-                }
-                else{
-                    ff=false;
+                    if (r.charAt(0) != '-')
+                        str = addSollution(str, "+" + r, i - leftNum.length(), i + rightNum.length());
+                    else str = addSollution(str, r, i - leftNum.length(), i + rightNum.length());
+                } else {
+                    ff = false;
                     return "Input Error";
                 }
-                i=0;
+                i = 0;
             }
         }
+        return str;
+    }
+
+    private String addAndSub(String str) {
+        String leftNum="", rightNum="", r="";
+
         for (Integer i=0;i<str.length();i++){
             if ((str.charAt(i) == '+') || (str.charAt(i) == '-')){
                 str = morePlusMinus(str);
@@ -445,12 +517,14 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 i=0;
             }
         }
+        return str;
+    }
 
+    private String purifyResult(String str){
         if (dotCheaking(str)){
             ff=false;
             return "Input Error";
         }  // cheaking if number has more than one dot
-
 
         for (;str.length()>1&&str.charAt(0)=='0';str = removeChar(str,0)); //Leading zero remover
 
@@ -510,5 +584,14 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
             return str;
         }
         else return str;
+    }
+
+    private String solution(String str){
+
+        str = multiAndDiv(str);
+        if(ff) str = addAndSub(str);
+        if(ff) str = purifyResult(str);
+
+        return str;
     }
 }
