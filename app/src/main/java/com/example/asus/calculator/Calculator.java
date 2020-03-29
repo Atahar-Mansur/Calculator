@@ -16,7 +16,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
     TextView equ, res;
     Button plus, minus, dev, mul, delete, equal;
     Button num0, num1, num2, num3, num4, num5, num6, num7, num8, num9, dot, clear;
-    Button sin, cos, tan, square, root;
+    Button sin, cos, tan, square, root, brac1st, brac2nd;
     HorizontalScrollView hsv;
     String Eqn = "", Result;
 
@@ -53,6 +53,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         tan = findViewById(R.id.tanId);
         square = findViewById(R.id.squareId);
         root = findViewById(R.id.rootId);
+        brac1st = findViewById(R.id.brac1stId);
+        brac2nd = findViewById(R.id.brac2ndId);
 
         plus.setOnClickListener(this);
         minus.setOnClickListener(this);
@@ -77,9 +79,12 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         tan.setOnClickListener(this);
         square.setOnClickListener(this);
         root.setOnClickListener(this);
+        brac1st.setOnClickListener(this);
+        brac2nd.setOnClickListener(this);
     }
 
     boolean ff = true;  // ff = true if no output error
+    Integer bracCounter = 0;
 
     @Override
     public void onClick(View view) {
@@ -96,7 +101,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '0';
                 equ.setText(Eqn);
 
-                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                if (!Eqn.isEmpty()) Result = bracket(Eqn);
                 else {
                     ff = false;
                     Result = "0";
@@ -108,7 +113,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '1';
                 equ.setText(Eqn);
 
-                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                if (!Eqn.isEmpty()) Result = bracket(Eqn);
                 else {
                     ff = false;
                     Result = "0";
@@ -120,7 +125,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '2';
                 equ.setText(Eqn);
 
-                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                if (!Eqn.isEmpty()) Result = bracket(Eqn);
                 else {
                     ff = false;
                     Result = "0";
@@ -132,7 +137,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '3';
                 equ.setText(Eqn);
 
-                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                if (!Eqn.isEmpty()) Result = bracket(Eqn);
                 else {
                     ff = false;
                     Result = "0";
@@ -144,7 +149,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '4';
                 equ.setText(Eqn);
 
-                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                if (!Eqn.isEmpty()) Result = bracket(Eqn);
                 else {
                     ff = false;
                     Result = "0";
@@ -156,7 +161,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '5';
                 equ.setText(Eqn);
 
-                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                if (!Eqn.isEmpty()) Result = bracket(Eqn);
                 else {
                     ff = false;
                     Result = "0";
@@ -168,7 +173,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '6';
                 equ.setText(Eqn);
 
-                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                if (!Eqn.isEmpty()) Result = bracket(Eqn);
                 else {
                     ff = false;
                     Result = "0";
@@ -180,7 +185,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '7';
                 equ.setText(Eqn);
 
-                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                if (!Eqn.isEmpty()) Result = bracket(Eqn);
                 else {
                     ff = false;
                     Result = "0";
@@ -192,7 +197,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '8';
                 equ.setText(Eqn);
 
-                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                if (!Eqn.isEmpty()) Result = bracket(Eqn);
                 else {
                     ff = false;
                     Result = "0";
@@ -204,7 +209,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '9';
                 equ.setText(Eqn);
 
-                if (!Eqn.isEmpty()) Result = solution(Eqn);
+                if (!Eqn.isEmpty()) Result = bracket(Eqn);
                 else {
                     ff = false;
                     Result = "0";
@@ -233,15 +238,24 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 equ.setText(Eqn);
                 break;
             case R.id.sineId:
-                if(ff && (Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') && (Eqn.length()==0 || !(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z'))) Eqn = Eqn + "sin";
+                if(ff && (Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') && (Eqn.length()==0 || !(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z'))){
+                    Eqn = Eqn + "sin(";
+                    bracCounter++;
+                }
                 equ.setText(Eqn);
                 break;
             case R.id.cosId:
-                if(ff && (Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') && (Eqn.length()==0 || !(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z'))) Eqn = Eqn + "cos";
+                if(ff && (Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') && (Eqn.length()==0 || !(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z'))){
+                    Eqn = Eqn + "cos(";
+                    bracCounter++;
+                }
                 equ.setText(Eqn);
                 break;
             case R.id.tanId:
-                if(ff && (Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') && (Eqn.length()==0 || !(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z'))) Eqn = Eqn + "tan";
+                if(ff && (Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') && (Eqn.length()==0 || !(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z'))){
+                    Eqn = Eqn + "tan(";
+                    bracCounter++;
+                }
                 equ.setText(Eqn);
                 break;
             case R.id.rootId:
@@ -251,11 +265,11 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 break;
             case R.id.squareId:
                 if(!ff) ff=true;
-                if(Eqn.length()!=0 && ((Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') || Eqn.charAt(Eqn.length()-1) == '\u00B2')){
+                if(Eqn.length()!=0 && ((Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') || Eqn.charAt(Eqn.length()-1) == '\u00B2' || Eqn.charAt(Eqn.length()-1) == ')')){
                     Eqn = Eqn + '\u00B2';
                     equ.setText(Eqn);
 
-                    if (!Eqn.isEmpty()) Result = solution(Eqn);
+                    if (!Eqn.isEmpty()) Result = bracket(Eqn);
                     else {
                         ff = false;
                         Result = "0";
@@ -270,10 +284,14 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 Result = "";
                 equ.setText(Eqn);
                 res.setText("0");
+                bracCounter = 0;
                 break;
             case R.id.deleteId:
                 if (Eqn != "")
                 {
+                    if(Eqn.charAt(Eqn.length()-1) == '(') bracCounter--;
+                    if(Eqn.charAt(Eqn.length()-1) == ')') bracCounter++;
+
                     if(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z')
                     {
                         Eqn = removeChar(Eqn, Eqn.length() - 1);
@@ -286,7 +304,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
                 if(!Eqn.isEmpty() && ((Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') || Eqn.charAt(Eqn.length()-1) == '\u00B2')) {
                     ff=true;
-                    Result = solution(Eqn);
+                    Result = bracket(Eqn);
                     res.setText(Result);
                 }
                 else if(Eqn.isEmpty()){
@@ -308,6 +326,20 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
                 res.setText(Result);
                 equ.setText(Eqn);
+                break;
+            case R.id.brac1stId:
+                if(ff) {
+                    Eqn = Eqn + '(';
+                    equ.setText(Eqn);
+                    bracCounter++;
+                }
+                break;
+            case R.id.brac2ndId:
+                if(ff && bracCounter > 0 && ((Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') || Eqn.charAt(Eqn.length()-1) == '\u00B2')) {
+                    Eqn = Eqn + ')';
+                    equ.setText(Eqn);
+                    bracCounter--;
+                }
                 break;
         }
     }
@@ -394,6 +426,31 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
             }
         }
         return 0;
+    }
+
+    private String bracket(String str) {
+
+        for(int i=0;i<bracCounter;i++) str = str + ')';
+
+        Integer i, j;
+
+        for(i=0;i<str.length();i++)
+        {
+            String subResult;
+
+            if(str.charAt(i)==')') {
+
+                for(j=i;str.charAt(j)!='(';j--);
+
+                subResult = solution(str.substring(j+1, i));
+                if(!ff) return subResult;
+                if(i+1<str.length() && str.charAt(i+1)=='\u00B2' && subResult.charAt(0)=='-') subResult =  subResult.substring(1);
+                if(j-1>=0 && (str.charAt(j-1) >= '0' && str.charAt(j-1) <= '9')) subResult ='\u00D7' + subResult;
+
+                str = addSollution(str, subResult, j, i);
+            }
+        }
+        return solution(str);
     }
 
     private String funSquareRoot(String str) {
@@ -504,7 +561,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
                 if (dotCheaking(leftNum) || dotCheaking(rightNum)){
                     ff=false;
-                    return "Input Error";
+                    return "Input Error1";
                 }
 
                 double x, y;
@@ -518,7 +575,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(rightNum.length()==0)
                 {
                     ff=false;
-                    return "Input Error";
+                    return "Input Error2";
                 }
                 else y = Double.parseDouble(rightNum);
                 if (str.charAt(i) == 's' && str.charAt(i+1) == 'i' && str.charAt(i+2) == 'n')
@@ -529,7 +586,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                     catch (Exception e)
                     {
                         ff=false;
-                        return "Input Error";
+                        return "Input Error3";
                     }
                 }
                 else if (str.charAt(i) == 'c' && str.charAt(i+1) == 'o' && str.charAt(i+2) == 's')
@@ -540,7 +597,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                     catch (Exception e)
                     {
                         ff=false;
-                        return "Input Error";
+                        return "Input Error4";
                     }
                 }
                 else if (str.charAt(i) == 't' && str.charAt(i+1) == 'a' && str.charAt(i+2) == 'n')
@@ -555,7 +612,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                     catch (Exception e)
                     {
                         ff=false;
-                        return "Input Error";
+                        return "Input Error5";
                     }
                 }
 
@@ -731,22 +788,20 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
         try{
             str = funSquareRoot(str);
+//            if(!ff) return "funSquareRoot";
             if(ff) str = funSinCosTan(str);
+//            if(!ff) return "funSinCosTan";
             if(ff) str = multiAndDiv(str);
+//            if(!ff) return "multiAndDiv";
             if(ff) str = addAndSub(str);
+//            if(!ff) return "addAndSub";
             if(ff) str = purifyResult(str);
+//            if(!ff) return "purifyResult";
         }
         catch (Exception e) {
             str = "Output exist";
         }
 
-        /*
-            str = funSquareRoot(str);
-            if(ff) str = funSinCosTan(str);
-            if(ff) str = multiAndDiv(str);
-            if(ff) str = addAndSub(str);
-            if(ff) str = purifyResult(str);
-        */
         return str;
     }
 }
