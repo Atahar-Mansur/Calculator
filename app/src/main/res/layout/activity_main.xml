@@ -48,7 +48,7 @@
             android:layout_marginBottom="20dp"
             android:textColor="@color/black"
             android:gravity="end"
-            android:maxLength="11"/>
+            android:maxLength="12"/>
 
     </LinearLayout>
 
@@ -322,6 +322,18 @@
         />
     <Button
         android:id="@+id/rootId"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        />
+    <Button
+        android:id="@+id/brac1stId"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        />
+    <Button
+        android:id="@+id/brac2ndId"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="invisible"

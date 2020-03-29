@@ -79,7 +79,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         root.setOnClickListener(this);
     }
 
-    boolean f = true, ff = true;  // f=false when equal button click; ff = true if no output error
+    boolean ff = true;  // ff = true if no output error
 
     @Override
     public void onClick(View view) {
@@ -92,13 +92,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
         switch (view.getId()) {
             case R.id.Id0:
-                if (f == false) {
-                    f = true;
-                    ff = true;
-                    Eqn = "";
-                }
                 if (!ff) ff=true;
-                Eqn = Eqn + '0';
+                if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '0';
                 equ.setText(Eqn);
 
                 if (!Eqn.isEmpty()) Result = solution(Eqn);
@@ -109,13 +104,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 res.setText(Result);
                 break;
             case R.id.Id1:
-                if (f == false) {
-                    f = true;
-                    ff = true;
-                    Eqn = "";
-                }
                 if (!ff) ff=true;
-                Eqn = Eqn + '1';
+                if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '1';
                 equ.setText(Eqn);
 
                 if (!Eqn.isEmpty()) Result = solution(Eqn);
@@ -126,13 +116,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 res.setText(Result);
                 break;
             case R.id.Id2:
-                if (f == false) {
-                    f = true;
-                    ff = true;
-                    Eqn = "";
-                }
                 if (!ff) ff=true;
-                Eqn = Eqn + '2';
+                if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '2';
                 equ.setText(Eqn);
 
                 if (!Eqn.isEmpty()) Result = solution(Eqn);
@@ -143,13 +128,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 res.setText(Result);
                 break;
             case R.id.Id3:
-                if (f == false) {
-                    f = true;
-                    ff = true;
-                    Eqn = "";
-                }
                 if (!ff) ff=true;
-                Eqn = Eqn + '3';
+                if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '3';
                 equ.setText(Eqn);
 
                 if (!Eqn.isEmpty()) Result = solution(Eqn);
@@ -160,13 +140,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 res.setText(Result);
                 break;
             case R.id.Id4:
-                if (f == false) {
-                    f = true;
-                    ff = true;
-                    Eqn = "";
-                }
                 if (!ff) ff=true;
-                Eqn = Eqn + '4';
+                if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '4';
                 equ.setText(Eqn);
 
                 if (!Eqn.isEmpty()) Result = solution(Eqn);
@@ -177,13 +152,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 res.setText(Result);
                 break;
             case R.id.Id5:
-                if (f == false) {
-                    f = true;
-                    ff = true;
-                    Eqn = "";
-                }
                 if (!ff) ff=true;
-                Eqn = Eqn + '5';
+                if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '5';
                 equ.setText(Eqn);
 
                 if (!Eqn.isEmpty()) Result = solution(Eqn);
@@ -194,13 +164,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 res.setText(Result);
                 break;
             case R.id.Id6:
-                if (f == false) {
-                    f = true;
-                    ff = true;
-                    Eqn = "";
-                }
                 if (!ff) ff=true;
-                Eqn = Eqn + '6';
+                if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '6';
                 equ.setText(Eqn);
 
                 if (!Eqn.isEmpty()) Result = solution(Eqn);
@@ -211,13 +176,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 res.setText(Result);
                 break;
             case R.id.Id7:
-                if (f == false) {
-                    f = true;
-                    ff = true;
-                    Eqn = "";
-                }
                 if (!ff) ff=true;
-                Eqn = Eqn + '7';
+                if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '7';
                 equ.setText(Eqn);
 
                 if (!Eqn.isEmpty()) Result = solution(Eqn);
@@ -228,13 +188,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 res.setText(Result);
                 break;
             case R.id.Id8:
-                if (f == false) {
-                    f = true;
-                    ff = true;
-                    Eqn = "";
-                }
                 if (!ff) ff=true;
-                Eqn = Eqn + '8';
+                if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '8';
                 equ.setText(Eqn);
 
                 if (!Eqn.isEmpty()) Result = solution(Eqn);
@@ -245,13 +200,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 res.setText(Result);
                 break;
             case R.id.Id9:
-                if (f == false) {
-                    f = true;
-                    ff = true;
-                    Eqn = "";
-                }
                 if (!ff) ff=true;
-                Eqn = Eqn + '9';
+                if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '9';
                 equ.setText(Eqn);
 
                 if (!Eqn.isEmpty()) Result = solution(Eqn);
@@ -262,73 +212,59 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 res.setText(Result);
                 break;
             case R.id.dotId:
-                if (f == false) {
-                    f = true;
-                    ff = true;
-                    Eqn = "";
-                }
                 if (!ff) ff=true;
-                Eqn = Eqn + '.';
+                if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '.';
                 equ.setText(Eqn);
                 break;
             case R.id.plusId:
-                if (f == false) {
-                    f = true;
-                    Eqn = Result;
-                }
                 if(ff) Eqn = Eqn + '+';
                 equ.setText(Eqn);
                 break;
             case R.id.minusId:
-                if (f == false) {
-                    f = true;
-                    Eqn = Result;
-                }
                 if(ff) Eqn = Eqn + '-';
                 equ.setText(Eqn);
                 break;
             case R.id.mulId:
-                if (f == false) {
-                    f = true;
-                    Eqn = Result;
-                }
                 if(ff && Eqn.length()!=0 && Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') Eqn = Eqn + '\u00D7';
                 equ.setText(Eqn);
                 break;
             case R.id.devId:
-                if (f == false) {
-                    f = true;
-                    Eqn = Result;
-                }
                 if(ff && Eqn.length()!=0 && Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') Eqn = Eqn + '\u00F7';
                 equ.setText(Eqn);
                 break;
             case R.id.sineId:
-                if (f == false) {
-                    f = true;
-                    Eqn = Result;
-                }
-                if(ff && (Eqn.length()==0 || !(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z'))) Eqn = Eqn + "sin";
+                if(ff && (Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') && (Eqn.length()==0 || !(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z'))) Eqn = Eqn + "sin";
                 equ.setText(Eqn);
                 break;
             case R.id.cosId:
-                if (f == false) {
-                    f = true;
-                    Eqn = Result;
-                }
-                if(ff && (Eqn.length()==0 || !(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z'))) Eqn = Eqn + "cos";
+                if(ff && (Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') && (Eqn.length()==0 || !(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z'))) Eqn = Eqn + "cos";
                 equ.setText(Eqn);
                 break;
             case R.id.tanId:
-                if (f == false) {
-                    f = true;
-                    Eqn = Result;
-                }
-                if(ff && (Eqn.length()==0 || !(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z'))) Eqn = Eqn + "tan";
+                if(ff && (Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') && (Eqn.length()==0 || !(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z'))) Eqn = Eqn + "tan";
                 equ.setText(Eqn);
                 break;
+            case R.id.rootId:
+                if(!ff) ff=true;
+                Eqn = Eqn + '\u221A';
+                equ.setText(Eqn);
+                break;
+            case R.id.squareId:
+                if(!ff) ff=true;
+                if(Eqn.length()!=0 && ((Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') || Eqn.charAt(Eqn.length()-1) == '\u00B2')){
+                    Eqn = Eqn + '\u00B2';
+                    equ.setText(Eqn);
+
+                    if (!Eqn.isEmpty()) Result = solution(Eqn);
+                    else {
+                        ff = false;
+                        Result = "0";
+                    }
+                    res.setText(Result);
+                }
+
+                break;
             case R.id.clearId:
-                f=true;
                 ff=true;
                 Eqn = "";
                 Result = "";
@@ -336,10 +272,6 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 res.setText("0");
                 break;
             case R.id.deleteId:
-                if (f == false) {
-                    f = true;
-                    res.setText("0");
-                }
                 if (Eqn != "")
                 {
                     if(Eqn.charAt(Eqn.length()-1) >= 'a' && Eqn.charAt(Eqn.length()-1) <= 'z')
@@ -352,7 +284,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 }
                 equ.setText(Eqn);
 
-                if(!Eqn.isEmpty() && Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') {
+                if(!Eqn.isEmpty() && ((Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') || Eqn.charAt(Eqn.length()-1) == '\u00B2')) {
                     ff=true;
                     Result = solution(Eqn);
                     res.setText(Result);
@@ -376,7 +308,6 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
                 res.setText(Result);
                 equ.setText(Eqn);
-                f = false;
                 break;
         }
     }
@@ -395,14 +326,16 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
     private String findLeftNum(String str, Integer n) {
         Integer i;
-        for (i = n - 1; str.charAt(i) != '+' && str.charAt(i) != '-' && str.charAt(i) != '\u00D7' && str.charAt(i) != '\u00F7' && i > 0; i--) ;
+        for (i = n - 1; ((str.charAt(i) >= '0' && str.charAt(i) <= '9') || str.charAt(i) == '.') && i > 0; i--) ;
         if (i == 0 || str.charAt(i) == '+' || str.charAt(i) == '-') i--;
+        if (str.charAt(0)=='\u221A') i++;
         return str.substring(i + 1, n);
     }
 
     private String findRightNum(String str, Integer n) {
-        Integer i;
-        for (i = n + 1; str.charAt(i) != '+' && str.charAt(i) != '-' && str.charAt(i) != '\u00D7' && str.charAt(i) != '\u00F7' && i < str.length() - 1; i++) ;
+        Integer i, m=n;
+        if(str.charAt(n+1)=='+'||str.charAt(n+1)=='-') m++;
+        for (i = m + 1; ((str.charAt(i) >= '0' && str.charAt(i) <= '9') || str.charAt(i) == '.') && i < str.length() - 1; i++) ;
         if (i == str.length() - 1) i++;
         return str.substring(n + 1, i);
     }
@@ -463,6 +396,98 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         return 0;
     }
 
+    private String funSquareRoot(String str) {
+        String leftNum="", rightNum="", r="";
+
+        for (Integer i=0;i<str.length();i++){
+            if (str.charAt(i) == '\u00B2'){
+
+                str = morePlusMinus(str);
+
+                leftNum = findLeftNum(str, i);
+
+                if (dotCheaking(leftNum)){
+                    ff=false;
+                    return "Input Error";
+                }
+
+                double x;
+                try{
+                    x = Double.parseDouble(leftNum);
+                }
+                catch (Exception e){
+                    ff=false;
+                    return "Input Error";
+                }
+
+                try {
+                    r = Double.toString(x*x);
+                }
+                catch (Exception e) {
+                    ff=false;
+                    return "Input Error";
+                }
+                if(leftNum.charAt(0)=='-') r = '-' + r;
+
+                if (r.charAt(0)!='-') str = addSollution(str,"+"+r,i-leftNum.length(),i);
+                else str = addSollution(str,r,i-leftNum.length(),i);
+
+                i=0;
+            }
+        }
+
+        for (Integer i=str.length()-1;i>=0;i--){
+            if (str.charAt(i) == '\u221A'){
+
+                str = morePlusMinus(str);
+
+                rightNum = findRightNum(str, i);
+                if(i==0) leftNum = "";
+                else leftNum = findLeftNum(str, i);
+
+                if (dotCheaking(leftNum) || dotCheaking(rightNum)){
+                    ff=false;
+                    return "Input Error";
+                }
+
+                double x, y;
+                try{
+                    x = Double.parseDouble(leftNum);
+                }
+                catch (Exception e){
+                    if(i!=0 && str.charAt(i-1)=='-') x=-1.0;
+                    else x=1.0;
+                }
+                if(rightNum.length()==0)
+                {
+                    ff=false;
+                    return "Input Error";
+                }
+                else y = Double.parseDouble(rightNum);
+
+                if(y<0){
+                    ff=false;
+                    return "Complex Number";
+                }
+
+                try {
+                    r = Double.toString(x*Math.sqrt(y));
+                }
+                catch (Exception e)
+                {
+                    ff=false;
+                    return "Input Error";
+                }
+
+                if (r.charAt(0)!='-') str = addSollution(str,"+"+r,i-leftNum.length(),i+rightNum.length());
+                else str = addSollution(str,r,i-leftNum.length(),i+rightNum.length());
+
+                i=str.length()-1;
+            }
+        }
+        return str;
+    }
+
     private String funSinCosTan(String str) {
         String leftNum="", rightNum="", r="";
         Double pi = 3.141592654;
@@ -471,6 +496,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
             if ((str.charAt(i) >= 'a') && (str.charAt(i) <= 'z')){
 
                 str = morePlusMinus(str);
+
 
                 rightNum = findRightNum(str, i+2);
                 if(i==0) leftNum = "";
@@ -486,7 +512,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                     x = Double.parseDouble(leftNum);
                 }
                 catch (Exception e){
-                    x=1.0;
+                    if(i!=0 && str.charAt(i-1)=='-') x=-1.0;
+                    else x=1.0;
                 }
                 if(rightNum.length()==0)
                 {
@@ -634,6 +661,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
     }
 
     private String purifyResult(String str){
+
         if (dotCheaking(str)){
             ff=false;
             return "Input Error";
@@ -701,11 +729,24 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
     private String solution(String str){
 
-        str = funSinCosTan(str);
-        if(ff) str = multiAndDiv(str);
-        if(ff) str = addAndSub(str);
-        if(ff) str = purifyResult(str);
+        try{
+            str = funSquareRoot(str);
+            if(ff) str = funSinCosTan(str);
+            if(ff) str = multiAndDiv(str);
+            if(ff) str = addAndSub(str);
+            if(ff) str = purifyResult(str);
+        }
+        catch (Exception e) {
+            str = "Output exist";
+        }
 
+        /*
+            str = funSquareRoot(str);
+            if(ff) str = funSinCosTan(str);
+            if(ff) str = multiAndDiv(str);
+            if(ff) str = addAndSub(str);
+            if(ff) str = purifyResult(str);
+        */
         return str;
     }
 }
