@@ -323,6 +323,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 }
                 else if (!Eqn.isEmpty()) Eqn = Result;
                 else Result = "0";
+                bracCounter=0;
 
                 res.setText(Result);
                 equ.setText(Eqn);
@@ -335,7 +336,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 }
                 break;
             case R.id.brac2ndId:
-                if(ff && bracCounter > 0 && ((Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') || Eqn.charAt(Eqn.length()-1) == '\u00B2')) {
+                if(ff && bracCounter > 0 && ((Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') || Eqn.charAt(Eqn.length()-1) == '\u00B2' || Eqn.charAt(Eqn.length()-1) == ')')) {
                     Eqn = Eqn + ')';
                     equ.setText(Eqn);
                     bracCounter--;
@@ -448,6 +449,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(j-1>=0 && (str.charAt(j-1) >= '0' && str.charAt(j-1) <= '9')) subResult ='\u00D7' + subResult;
 
                 str = addSollution(str, subResult, j, i);
+                i=0;
             }
         }
         return solution(str);
