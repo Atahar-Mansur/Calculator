@@ -12,6 +12,18 @@
         android:layout_height="match_parent"
         android:layout_weight="3">
 
+        <Button
+            android:id="@+id/degreeRadianId"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:layout_margin="5dp"
+            android:text="DEG"
+            android:textColor="@color/ash"
+            android:textSize="12dp"
+            android:background="@color/white"
+            android:layout_weight="1"
+            />
+
         <HorizontalScrollView
             android:id="@+id/hsvId"
             android:layout_width="wrap_content"
@@ -28,7 +40,6 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="textEnd"
                 android:textSize="30sp"
-                android:layout_marginTop="20dp"
                 android:textColor="@color/ash"
                 android:gravity="end"/>
 
@@ -41,13 +52,12 @@
             android:text="0"
             android:textAlignment="textEnd"
             android:textSize="45sp"
-            android:layout_marginTop="40dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginBottom="30dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:textColor="@color/black"
-            android:gravity="end"
-            android:maxLength="12"/>
+            android:gravity="end"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,7 +72,7 @@
                 android:layout_margin="1dp"
                 android:text="C"
                 android:textColor="@color/white"
-                android:textSize="45dp"
+                android:textSize="30dp"
                 android:background="@color/sky_blue"
                 android:layout_weight="1"
                 />
@@ -73,7 +83,7 @@
                 android:layout_margin="1dp"
                 android:text="\u00F7"
                 android:textColor="@color/white"
-                android:textSize="45dp"
+                android:textSize="30dp"
                 android:background="@color/sky_blue"
                 android:layout_weight="1"
                 />
@@ -84,7 +94,7 @@
                 android:layout_margin="1dp"
                 android:text="\u00D7"
                 android:textColor="@color/white"
-                android:textSize="45dp"
+                android:textSize="30dp"
                 android:background="@color/sky_blue"
                 android:layout_weight="1"
                 />
@@ -95,7 +105,7 @@
                 android:layout_margin="1dp"
                 android:text="-"
                 android:textColor="@color/white"
-                android:textSize="45dp"
+                android:textSize="30dp"
                 android:background="@color/sky_blue"
                 android:layout_weight="1"
                 />
@@ -106,7 +116,7 @@
                 android:layout_margin="1dp"
                 android:text="+"
                 android:textColor="@color/white"
-                android:textSize="45dp"
+                android:textSize="30dp"
                 android:background="@color/sky_blue"
                 android:layout_weight="1"
                 />
@@ -118,7 +128,7 @@
                 android:textStyle="bold"
                 android:text="\u21A9"
                 android:textColor="@color/white"
-                android:textSize="45dp"
+                android:textSize="30dp"
                 android:background="@color/sky_blue"
                 android:layout_weight="1"
                 />

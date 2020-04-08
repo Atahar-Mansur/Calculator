@@ -1,7 +1,9 @@
 package com.example.asus.calculator;
 
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
@@ -17,8 +19,14 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
     Button plus, minus, dev, mul, delete, equal;
     Button num0, num1, num2, num3, num4, num5, num6, num7, num8, num9, dot, clear;
     Button sin, cos, tan, square, root, brac1st, brac2nd;
+    Button degRad;
     HorizontalScrollView hsv;
     String Eqn = "", Result;
+
+    boolean ff = true, degRedFlag = true;  // ff = true if no output error; degRedFlag = true if the number in degree else radian
+    Integer bracCounter = 0;
+
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +63,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         root = findViewById(R.id.rootId);
         brac1st = findViewById(R.id.brac1stId);
         brac2nd = findViewById(R.id.brac2ndId);
+        degRad = findViewById(R.id.degreeRadianId);
 
         plus.setOnClickListener(this);
         minus.setOnClickListener(this);
@@ -81,11 +90,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         root.setOnClickListener(this);
         brac1st.setOnClickListener(this);
         brac2nd.setOnClickListener(this);
+        degRad.setOnClickListener(this);
     }
-
-    boolean ff = true;  // ff = true if no output error
-    Integer bracCounter = 0;
-
     @Override
     public void onClick(View view) {
 
@@ -218,7 +224,20 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 break;
             case R.id.dotId:
                 if (!ff) ff=true;
-                if(Eqn.length()==0 || Eqn.charAt(Eqn.length()-1) != '\u00B2') Eqn = Eqn + '.';
+
+                boolean df=true;
+                for(int i = Eqn.length()-1; i>0 && ((Eqn.charAt(i) >= '0' && Eqn.charAt(i) <= '9') || Eqn.charAt(i) <= '.'); i--){
+                    if(Eqn.charAt(i) == '.'){
+                        df=false;
+                        break;
+                    }
+                }
+
+                if(Eqn.isEmpty()) Eqn = Eqn + "0.";
+                else if(df && Eqn.charAt(Eqn.length()-1) != '\u00B2'){
+                    if(Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') Eqn = Eqn + '.';
+                    else Eqn = Eqn + "0.";
+                }
                 equ.setText(Eqn);
                 break;
             case R.id.plusId:
@@ -230,11 +249,11 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 equ.setText(Eqn);
                 break;
             case R.id.mulId:
-                if(ff && Eqn.length()!=0 && Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') Eqn = Eqn + '\u00D7';
+                if(ff && Eqn.length()!=0 && ((Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') || Eqn.charAt(Eqn.length()-1) == ')')) Eqn = Eqn + '\u00D7';
                 equ.setText(Eqn);
                 break;
             case R.id.devId:
-                if(ff && Eqn.length()!=0 && Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') Eqn = Eqn + '\u00F7';
+                if(ff && Eqn.length()!=0 && ((Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') || Eqn.charAt(Eqn.length()-1) == ')')) Eqn = Eqn + '\u00F7';
                 equ.setText(Eqn);
                 break;
             case R.id.sineId:
@@ -284,7 +303,10 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 Result = "";
                 equ.setText(Eqn);
                 res.setText("0");
+                res.setTextSize(45);
+                res.setPadding(dpToPx(20),dpToPx(20),dpToPx(20),dpToPx(20));
                 bracCounter = 0;
+
                 break;
             case R.id.deleteId:
                 if (Eqn != "")
@@ -302,7 +324,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 }
                 equ.setText(Eqn);
 
-                if(!Eqn.isEmpty() && ((Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') || Eqn.charAt(Eqn.length()-1) == '\u00B2')) {
+                if(!Eqn.isEmpty() && ((Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') || Eqn.charAt(Eqn.length()-1) == '\u00B2' || Eqn.charAt(Eqn.length()-1) == ')')) {
                     ff=true;
                     Result = bracket(Eqn);
                     res.setText(Result);
@@ -312,6 +334,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                     Result = "";
                     equ.setText(Eqn);
                     res.setText("0");
+                    res.setTextSize(45);
+                    res.setPadding(dpToPx(20),dpToPx(20),dpToPx(20),dpToPx(20));
                 }
 
                 break;
@@ -340,6 +364,22 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                     Eqn = Eqn + ')';
                     equ.setText(Eqn);
                     bracCounter--;
+                }
+                break;
+            case R.id.degreeRadianId:
+                if(degRedFlag){
+                    degRedFlag = false;
+                    degRad.setText("RAD");
+                }
+                else{
+                    degRedFlag = true;
+                    degRad.setText("DEG");
+                }
+
+                if(!Eqn.isEmpty() && ((Eqn.charAt(Eqn.length()-1) >= '0' && Eqn.charAt(Eqn.length()-1) <= '9') || Eqn.charAt(Eqn.length()-1) == '\u00B2' || Eqn.charAt(Eqn.length()-1) == ')')) {
+                    ff=true;
+                    Result = bracket(Eqn);
+                    res.setText(Result);
                 }
                 break;
         }
@@ -391,17 +431,6 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         return str;
     }
 
-    private boolean dotCheaking(String str) {
-        boolean flag = false;
-        for (Integer i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == '.') {
-                if (!flag) flag = true;
-                else return true;
-            }
-        }
-        return false;
-    }
-
     private boolean singleDotCheaking(String str) {
         for (Integer i = 0; i < str.length(); i++) {
             if (str.charAt(i) == '.') {
@@ -429,6 +458,10 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         return 0;
     }
 
+    public static int dpToPx(int dp) {
+        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
+    }
+
     private String bracket(String str) {
 
         for(int i=0;i<bracCounter;i++) str = str + ')';
@@ -447,6 +480,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(!ff) return subResult;
                 if(i+1<str.length() && str.charAt(i+1)=='\u00B2' && subResult.charAt(0)=='-') subResult =  subResult.substring(1);
                 if(j-1>=0 && (str.charAt(j-1) >= '0' && str.charAt(j-1) <= '9')) subResult ='\u00D7' + subResult;
+                if(i+1<str.length() && (str.charAt(i+1) >= '0' && str.charAt(i+1) <= '9')) subResult = subResult + '\u00D7';
 
                 str = addSollution(str, subResult, j, i);
                 i=0;
@@ -464,11 +498,6 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 str = morePlusMinus(str);
 
                 leftNum = findLeftNum(str, i);
-
-                if (dotCheaking(leftNum)){
-                    ff=false;
-                    return "Input Error";
-                }
 
                 double x;
                 try{
@@ -503,11 +532,6 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 rightNum = findRightNum(str, i);
                 if(i==0) leftNum = "";
                 else leftNum = findLeftNum(str, i);
-
-                if (dotCheaking(leftNum) || dotCheaking(rightNum)){
-                    ff=false;
-                    return "Input Error";
-                }
 
                 double x, y;
                 try{
@@ -561,11 +585,6 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if(i==0) leftNum = "";
                 else leftNum = findLeftNum(str, i);
 
-                if (dotCheaking(leftNum) || dotCheaking(rightNum)){
-                    ff=false;
-                    return "Input Error1";
-                }
-
                 double x, y;
                 try{
                     x = Double.parseDouble(leftNum);
@@ -583,7 +602,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 if (str.charAt(i) == 's' && str.charAt(i+1) == 'i' && str.charAt(i+2) == 'n')
                 {
                     try {
-                        r = Double.toString(x*Math.sin(y*pi/180));
+                        if(degRedFlag) r = Double.toString(x*Math.sin(y*pi/180));
+                        else r = Double.toString(x*Math.sin(y));
                     }
                     catch (Exception e)
                     {
@@ -594,7 +614,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                 else if (str.charAt(i) == 'c' && str.charAt(i+1) == 'o' && str.charAt(i+2) == 's')
                 {
                     try {
-                        r = Double.toString(x*Math.cos(y*pi/180));
+                        if(degRedFlag) r = Double.toString(x*Math.cos(y*pi/180));
+                        else r = Double.toString(x*Math.cos(y));
                     }
                     catch (Exception e)
                     {
@@ -609,7 +630,8 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                             ff = false;
                             return "Indefinite";
                         }
-                        r = Double.toString(x*Math.tan(y*pi/180));
+                        if(degRedFlag) r = Double.toString(x*Math.tan(y*pi/180));
+                        else r = Double.toString(x*Math.tan(y));
                     }
                     catch (Exception e)
                     {
@@ -652,11 +674,6 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                         rightNum = findRightNum(str, i);
                     }
 
-                    if (dotCheaking(leftNum) || dotCheaking(rightNum)) {
-                        ff = false;
-                        return "Input Error";
-                    }
-
                     double x = Double.parseDouble(leftNum);
                     double y = Double.parseDouble(rightNum);
                     if (str.charAt(i) == '\u00D7') r = Double.toString(x * y);
@@ -683,23 +700,14 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
     private String addAndSub(String str) {
         String leftNum="", rightNum="", r="";
 
+        str = morePlusMinus(str);
+
         for (Integer i=0;i<str.length();i++){
             if ((str.charAt(i) == '+') || (str.charAt(i) == '-')){
-                str = morePlusMinus(str);
-                if(i!=0&&i!=str.length()-1){
-                    if ((str.charAt(i+1) == '+') || (str.charAt(i+1) == '-')){
-                        ff=false;
-                        return "Input Error";
-                    }
-                    else {
-                        leftNum = findLeftNum(str, i);
-                        rightNum = findRightNum(str, i);
-                    }
+                if(i!=0 && str.charAt(i-1)!='E'){
 
-                    if (dotCheaking(leftNum) || dotCheaking(rightNum)){
-                        ff=false;
-                        return "Input Error";
-                    }
+                    leftNum = findLeftNum(str, i);
+                    rightNum = findRightNum(str, i);
 
                     double x = Double.parseDouble(leftNum);
                     double y = Double.parseDouble(rightNum);
@@ -708,12 +716,9 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
                     if (r.charAt(0)!='-') str = addSollution(str,"+"+r,i-leftNum.length(),i+rightNum.length());
                     else str = addSollution(str,r,i-leftNum.length(),i+rightNum.length());
+
+                    i=0;
                 }
-                else if (i==str.length()-1){
-                    ff=false;
-                    return "Input Error";
-                }
-                i=0;
             }
         }
         return str;
@@ -721,69 +726,30 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
     private String purifyResult(String str){
 
-        if (dotCheaking(str)){
-            ff=false;
-            return "Input Error";
-        }  // cheaking if number has more than one dot
-
-        for (;str.length()>1&&str.charAt(0)=='0';str = removeChar(str,0)); //Leading zero remover
+        double result;
+        result = Double.parseDouble(str) + 0;
+        str = Double.toString(result);
 
         if (str.charAt(0)=='+')  str = removeChar(str,0); // Leading plus sign remover
 
-        if (str.charAt(0)=='.'&&str.length()==1) str = "0"; // add zero before dot
-        else if (str.charAt(0)=='.') str = "0"+str;
-
-        if (str.length()>2&&str.charAt(str.length()-1)=='0'&&str.charAt(str.length()-2)=='.'){
-            str = removeChar(str,str.length()-1);
-            str = removeChar(str,str.length()-1);
-        }  // remove .0 from result
-
-        if (singleDotCheaking(str)){
-            if (eCheaking(str)){
-                Integer p = ePosition(str);
-                while (str.charAt(p-1)=='0'){
-                    str = removeChar(str,p-1);
-                    p--;
-                }
-                if (str.charAt(p-1)=='.') str = removeChar(str,p-1);
-            }
-            else{
-                Integer p = str.length();
-                while (str.charAt(p-1)=='0'){
-                    str = removeChar(str,p-1);
-                    p--;
-                }
+        if(str.length()>1) {
+            if(str.charAt(str.length()-2) == '.' && str.charAt(str.length()-1) == '0'){
+                str = removeChar(str,str.length()-1);
+                str = removeChar(str,str.length()-1);
             }
         }
 
-        if(str.charAt(str.length()-1)=='.') str = removeChar(str,str.length()-1);
-
-        if(str.length()>10) {
-
-            double x = Double.parseDouble(str);
-            str = Double.toString(x*1);
-
-            if (singleDotCheaking(str)){
-                if (eCheaking(str)){
-                    Integer p = ePosition(str);
-                    while (str.length()!=10){
-                        str = removeChar(str,p-1);
-                        p--;
-                    }
-                    if (str.charAt(p-1)=='.') str = removeChar(str,p-1);
-                }
-                else{
-                    Integer p = str.length();
-                    while (str.length()!=10){
-                        str = removeChar(str,p-1);
-                        p--;
-                    }
-                    if (str.charAt(p-1)=='.') str = removeChar(str,p-1);
-                }
-            }
-            return str;
+        if(str.length() > 12){
+            res.setTextSize(25);
+            res.setPadding(dpToPx(20),dpToPx(45),dpToPx(20),dpToPx(20));
         }
-        else return str;
+        else
+        {
+            res.setTextSize(45);
+            res.setPadding(dpToPx(20),dpToPx(20),dpToPx(20),dpToPx(20));
+        }
+
+        return str;
     }
 
     private String solution(String str){

@@ -13,6 +13,19 @@
         android:layout_height="wrap_content"
         android:layout_weight="2">
 
+        <Button
+            android:id="@+id/degreeRadianId"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:layout_margin="5dp"
+            android:text="DEG"
+            android:textColor="@color/ash"
+            android:textSize="12dp"
+            android:background="@color/white"
+            android:layout_weight="1"
+            />
+
+
         <HorizontalScrollView
             android:id="@+id/hsvId"
             android:layout_width="wrap_content"
@@ -29,7 +42,6 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="textEnd"
                 android:textSize="30sp"
-                android:layout_marginTop="20dp"
                 android:textColor="@color/ash"
                 android:gravity="end"/>
 
@@ -42,13 +54,13 @@
             android:layout_weight="1"
             android:text="0"
             android:textAlignment="textEnd"
-            android:textSize="50sp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="20dp"
+            android:textSize="45sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:textColor="@color/black"
-            android:gravity="end"
-            android:maxLength="12"/>
+            android:gravity="end"/>
 
     </LinearLayout>
 
